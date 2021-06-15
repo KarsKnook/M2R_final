@@ -3,9 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def draw(G, solution=None, pos=None):
-    # draws the solution tour of TSP on graph G. solution is a list with numbers [1,n-1]. pos is a position dictionary of the nodes of graph G.
-
+def draw_solution(G, solution=None, pos=None):
+    """
+    Input: G is the graph, solution is the solution tour and pos is the dictionary with positional arguments of the nodes.
+    Output: a matplotlib plot
+    """
     if not pos:
         pos = nx.circular_layout(G)  # could also choose other layouts
 
