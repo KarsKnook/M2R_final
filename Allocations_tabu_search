@@ -103,7 +103,7 @@ def completion_time(ETC, ready_times, solution):
                 completion_list[i] += ETC [i][j]
     return max(completion_list)
 
-def diversification_search(ETC, ready_times, solution, diversification_iterations = 5000, swaps = 10, transfers = 10, L = 0.5, p = 0.8):
+def diversification_search(ETC, ready_times, diversification_iterations = 5000, swaps = 10, transfers = 10, L = 0.5, p = 0.8):
     #Input: ETC = m x n matrix, m is the number of machines, n is the number of jobs
     #       ready_times = m-vector containing the ready time of each machine
     #       diversification_iterations = number of iterations for which we apply the diversification procedures; first iterations
@@ -117,7 +117,7 @@ def diversification_search(ETC, ready_times, solution, diversification_iteration
     #Initializing variables    
     m = np.shape(ETC)[0]
     n = np.shape(ETC)[1]
-    algo_solution = solution
+    algo_solution = initial_solution(ETC, ready_times)
     best_solution = algo_solution
 
     """change parameters"""
@@ -662,8 +662,7 @@ def job_tabu_search(ETC, ready_times, diversification_iterations = 5000, intensi
     m = np.shape(ETC)[0]
     n = np.shape(ETC)[1]
 
-    solution = initial_solution(ETC, ready_times)
-    diversification_result = diversification_search(ETC, ready_times, solution, diversification_iterations, swaps, transfers, L, p)
+    diversification_result = diversification_search(ETC, ready_times, diversification_iterations, swaps, transfers, L, p)
     solution = list(diversification_result[0])
     intensification_result = intensification_search(ETC, ready_times, solution, intensification_iterations, L)
     best_solution = intensification_result[0]
