@@ -1,3 +1,5 @@
+import numpy as np
+
 def collinear(s0,s1,a = 0.01, b = 0.01, c = 0.01):
     """
     Input: two line segments s0 and s1 with endpoints [A,B], [C,D] respectively
