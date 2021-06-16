@@ -50,7 +50,7 @@ def intersects(s0,s1):
     return det0*det1 < 0 and det2*det3 < 0
 
 
-def intersection_detection(G, pos, path):
+def intersection_detection(G, pos, path, a, b, c):
     path = [0] + path + [0]
     new_path = []
     for i in range(len(path)-1):
